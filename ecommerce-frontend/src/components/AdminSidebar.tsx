@@ -17,11 +17,12 @@ interface LiProps {
     url: string,
     text: string,
     location: Location,
-    icon: IconType
+    Icon: IconType
 }
 
-const Li =({url, text, location, icon}:LiProps)=> <li>
+const Li =({url, text, location, Icon}:LiProps)=> <li>
     <Link to={url}>
+    <Icon/>
     {text}
     </Link>
 </li>
