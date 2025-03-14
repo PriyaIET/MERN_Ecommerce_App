@@ -8,7 +8,7 @@ const Dashboard = () => {
       <AdminSidebar/>
       {/* main */}
       <main>
-        
+        Dashboard
       </main>
     </div>
   )

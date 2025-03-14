@@ -43,6 +43,31 @@ a{
         &::-webkit-scrollbar{
             display: none;
         }
+        >div{
+            margin: 2rem 1rem;
+            >h5{
+                @include mixins.header(2px);
+                opacity: 0.8;
+                margin: 1rem 0;
+            }
+            >ul{
+                @include mixins.flex(column, unset, unset, 0.5rem);
+                list-style: none;
+                >li{
+                    padding: 0.5rem 1rem;
+                    border-radius: 10px;
+                    a{
+                        color: rgba(0, 0, 0, 0.825);
+                        @include mixins.flex(row, unset);
+                    }
+                }
+
+                >li:hover{
+                    transform: scale(1.1);
+                }
+
+            }
+        }
     }
     > li{
         list-style: none;
