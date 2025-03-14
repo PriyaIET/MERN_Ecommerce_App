@@ -1,4 +1,4 @@
-import { RiDatabaseFill, RiShoppingBag3Fill } from "react-icons/ri";
+import { RiDashboardFill, RiShoppingBag3Fill } from "react-icons/ri";
 import { AiFillFileText } from "react-icons/ai";
 import { IoIosPeople } from "react-icons/io";
 import { Link, useLocation } from "react-router-dom";
@@ -13,7 +13,7 @@ const AdminSidebar = () => {
         <ul>
           <li>
             <Link to={"/admin/dashboard"}>
-              <RiDatabaseFill />
+              <RiDashboardFill />
               Dashborad
             </Link>
           </li>
@@ -24,7 +24,7 @@ const AdminSidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/admin/customer"}>       
+            <Link to={"/admin/customer"}>
               <IoIosPeople />
               Customer
             </Link>
