@@ -35,7 +35,7 @@ a{
 .admin-container{
     @include mixins.grid(1fr 4fr, 2rem);
     height: 100vh;
-    background-color: rgb(207, 190, 190);
+    background-color: rgb(226, 226, 226);
     > aside{
         width: 100%;
         background-color: rgb(247, 247, 247);

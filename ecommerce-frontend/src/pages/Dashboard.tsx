@@ -3,6 +3,9 @@ import AdminSidebar from "../components/AdminSidebar";
 import { BsSearch } from "react-icons/bs";
 import userImg from "../assets/userpic.png";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
+import data from "../assets/data.json";
+import { BarChart, DoughnutChart } from "../components/Charts";
+import { BiMaleFemale } from "react-icons/bi";
 
 const Dashboard = () => {
   return (
@@ -29,7 +32,7 @@ const Dashboard = () => {
             heading="Users"
             percent={-20}
             value={340}
-            color="rgb(0,198, 202)"
+            color="rgb(202, 47, 0)"
           />
           <WidgetItem
             heading="Transactions"
@@ -41,24 +44,54 @@ const Dashboard = () => {
             heading="Products"
             percent={30}
             value={1000}
-            color="rgb(76, 0, 255)"
+            color="rgb(148, 121, 206)"
           />
         </section>
         <section className="graph-container">
           <div className="revenue-chart">
             <h2>Revenue & Transaction</h2>
             {/* Graph */}
+            <BarChart
+              data_1={[300, 244, 433, 655, 637, 755, 400]}
+              data_2={[200, 144, 433, 455, 537, 750, 180]}
+              title_1="Revenue"
+              title_2="Transactions"
+              bgColor_1="rgb(0, 115, 255)"
+              bgColor_2="rgba(53, 162, 235, 0.8)"
+            />
           </div>
           <div className="dashboard-categories">
             <h2>Inventory</h2>
             <div>
-              <CategoryItem
-                heading={"Laptops"}
-                value={70}
-                color="hsl(169, 100%, 50%)"
-              />
+              {data.categories.map((category) => (
+                <CategoryItem
+                  key={category.heading}
+                  heading={category.heading}
+                  value={category.value}
+                  color={`hsl(${category.value * 7}, ${category.value}%, 50%)`}
+                />
+              ))}
             </div>
           </div>
+        </section>
+        <section className="transaction-container">
+          <div className="gender-chart">
+            <h2>Gender Ratio</h2>
+            <DoughnutChart
+              labels={["Female", "Male"]}
+              data={[12, 19]}
+              backgroundColor={[
+                "hsl(340, 82%, 56%)",
+                "hsl(199, 56.30%, 49.40%)",
+              ]}
+              cutout={90}
+            />
+            {/* {chart} */}
+            <p>
+              <BiMaleFemale />
+            </p>
+          </div>
+          {/* {Table} */}
         </section>
       </main>
     </div>
@@ -130,8 +163,7 @@ const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
           backgroundColor: color,
           width: `${value}%`,
         }}
-      >
-      </div>
+      ></div>
     </div>
     <span>{value}%</span>
   </div>
