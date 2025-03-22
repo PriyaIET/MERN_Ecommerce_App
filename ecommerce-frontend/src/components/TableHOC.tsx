@@ -6,18 +6,32 @@ function TableHOC<T extends {}>(columns: Column<T>[], data:T[], containerClassna
             columns,
             data
         }
-        const {getTableBodyProps, getTableProps, headerGroups, rows, prepareRow} = useTable()
+        const {getTableBodyProps, getTableProps, headerGroups, rows, prepareRow} = useTable(options)
         return <div className={containerClassname}>
             <h2 className="heading">{heading}</h2>
             <table className="table" {...getTableProps()}>
                 <thead>
                     {
-                        headerGroups.map((header)=>(
-                            <tr>{}</tr>
+                        headerGroups.map((headerGroup)=>(
+                            <tr {...headerGroup.getHeaderGroupProps()}>{
+                                headerGroup.headers.map((column)=>(
+                                    <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                                ))}</tr>
                         ))
                     }
                 </thead>
-                <tbody></tbody>
+                <tbody {...getTableBodyProps()}>
+                 {
+                    rows.map((row)=>{
+                        prepareRow(row)
+                       return <tr {...row.getRowProps()}>
+                            {row.cells.map((cell)=>(
+                                <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                            ))}
+                        </tr>
+                    })
+                 }
+                </tbody>
             </table>
         </div>
     }
