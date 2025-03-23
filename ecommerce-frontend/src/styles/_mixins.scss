@@ -3,7 +3,7 @@
     font-weight: $weight;
     text-transform: $case;
 }
-@mixin flex($dir: row, $justifyContent: 300, $alginItems: uppercase, $gap: 1rem){
+@mixin flex($dir: row, $justifyContent: center, $alginItems: center, $gap: 1rem){
     display: flex;
     flex-direction: $dir;
     justify-content: $justifyContent;
