@@ -35,7 +35,8 @@ function TableHOC<T extends {}>(
       nextPage,
       canNextPage,
       canPreviousPage,
-      pageCount, state:{pageIndex}
+      pageCount,
+      state: { pageIndex },
     } = useTable(options, useSortBy, usePagination);
     return (
       <div className={containerClassname}>
@@ -80,7 +81,9 @@ function TableHOC<T extends {}>(
             <button disabled={!canPreviousPage} onClick={previousPage}>
               Prev
             </button>
-            <span>{pageIndex+1} of {pageCount}</span>
+            <span>
+              {pageIndex + 1} of {pageCount}
+            </span>
             <button disabled={!canNextPage} onClick={nextPage}>
               Next
             </button>

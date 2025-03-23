@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useState } from "react";
-import AdminSidebar from "../components/AdminSidebar"
+import AdminSidebar from "../components/AdminSidebar";
 import { Column } from "react-table";
 import TableHOC from "../components/TableHOC";
 import { FaTrash } from "react-icons/fa";
@@ -8,7 +8,7 @@ interface DataType {
   name: string;
   gender: string;
   email: string;
-  role:string;
+  role: string;
   action: ReactElement;
 }
 
@@ -30,54 +30,62 @@ const columns: Column<DataType>[] = [
     accessor: "email",
   },
   {
-    Header:"Role",
-    accessor:"role"
+    Header: "Role",
+    accessor: "role",
   },
   {
     Header: "Action",
     accessor: "action",
   },
 ];
-const img = "https://randomuser.me/api/portraits/women/53.jpg"
-const img2 = "https://randomuser.me/api/portraits/men/59.jpg"
-const arr:DataType[] =[
+const img = "https://randomuser.me/api/portraits/women/53.jpg";
+const img2 = "https://randomuser.me/api/portraits/men/59.jpg";
+const arr: DataType[] = [
   {
-    avatar: (<img style={{borderRadius:"50%"}} src={img} alt="lady1" />),
+    avatar: <img style={{ borderRadius: "50%" }} src={img} alt="lady1" />,
     name: "Emily Palmer",
-    gender:"female",
+    gender: "female",
     email: "emily.palmer@gmail.com",
-    role:"Customer Support",
-    action: (<button>
-      <FaTrash/>
-    </button>)
+    role: "Customer Support",
+    action: (
+      <button>
+        <FaTrash />
+      </button>
+    ),
   },
   {
-    avatar: (<img style={{borderRadius:"50%"}} src={img2} alt="lady1" />),
+    avatar: <img style={{ borderRadius: "50%" }} src={img2} alt="lady1" />,
     name: "Henry wang",
-    gender:"male",
+    gender: "male",
     email: "henry.wang@gmail.com",
-    role:"User",
-    action: (<button>
-      <FaTrash/>
-    </button>)
-  }
-]
+    role: "User",
+    action: (
+      <button>
+        <FaTrash />
+      </button>
+    ),
+  },
+];
 const Customer = () => {
   const [data] = useState<DataType[]>(arr);
   const Table = useCallback(
-    TableHOC<DataType>(columns, data, "dashboard-product-box", "Customers", true),
+    TableHOC<DataType>(
+      columns,
+      data,
+      "dashboard-product-box",
+      "Customers",
+      true
+    ),
     []
   );
   return (
     <div className="admin-container">
       {/* SideBar */}
-      <AdminSidebar/>
+      <AdminSidebar />
       {/* main */}
-      <main>
-        {Table()}
-      </main>
+      <main>{Table()}</main>
     </div>
-  )
-}
+  );
+};
 
-export default Customer
+export default Customer;

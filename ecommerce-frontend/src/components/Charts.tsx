@@ -59,19 +59,19 @@ export const BarChart = ({
         text: "Chart.js Bar Chart",
       },
     },
-    scales:{
-      y:{
+    scales: {
+      y: {
         beginAtZero: true,
-        grid:{
-          display: false
-        }
+        grid: {
+          display: false,
+        },
       },
-      x:{
-        grid:{
-          display: false
-        }
-      }
-    }
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+    },
   };
 
   const data: ChartData<"bar", number[], string> = {
@@ -81,55 +81,63 @@ export const BarChart = ({
         label: title_1,
         data: data_1,
         backgroundColor: bgColor_1,
-        barThickness:"flex",
-        barPercentage:1,
-        categoryPercentage:0.4
+        barThickness: "flex",
+        barPercentage: 1,
+        categoryPercentage: 0.4,
       },
       {
         label: title_2,
         data: data_2,
         backgroundColor: bgColor_2,
-        barThickness:"flex",
-        barPercentage:1,
-        categoryPercentage:0.4
+        barThickness: "flex",
+        barPercentage: 1,
+        categoryPercentage: 0.4,
       },
     ],
   };
   return <Bar options={options} data={data} />;
 };
 
-interface DoughnutChartProps{
+interface DoughnutChartProps {
   labels: string[];
   data: number[];
   backgroundColor: string[];
-  cutout?:number|string;
-  legends?:boolean;
-  offset?:number[];
+  cutout?: number | string;
+  legends?: boolean;
+  offset?: number[];
 }
 
-export const DoughnutChart=({labels, data, backgroundColor, cutout, legends=true, offset}:DoughnutChartProps)=>{
-
+export const DoughnutChart = ({
+  labels,
+  data,
+  backgroundColor,
+  cutout,
+  legends = true,
+  offset,
+}: DoughnutChartProps) => {
   const doughnutData: ChartData<"doughnut", number[], string> = {
     labels,
-    datasets:[{
-      data,
-      backgroundColor,
-      borderWidth:0,
-      offset
-    }]
+    datasets: [
+      {
+        data,
+        backgroundColor,
+        borderWidth: 0,
+        offset,
+      },
+    ],
   };
   const doughnutOptions: ChartOptions<"doughnut"> = {
-    responsive:true,
-    plugins:{
-      legend:{
-        display:legends,
-        position:"bottom",
-        labels:{
-          padding:40
-        }
-      }
+    responsive: true,
+    plugins: {
+      legend: {
+        display: legends,
+        position: "bottom",
+        labels: {
+          padding: 40,
+        },
+      },
     },
-    cutout
+    cutout,
   };
-  return <Doughnut data={doughnutData} options={doughnutOptions}/>
-}
+  return <Doughnut data={doughnutData} options={doughnutOptions} />;
+};

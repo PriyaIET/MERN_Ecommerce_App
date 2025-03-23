@@ -8,7 +8,7 @@ interface DataType {
   amount: number;
   status: string;
 }
-const columns:Column<DataType>[] = [
+const columns: Column<DataType>[] = [
   { Header: "ID", accessor: "id" },
   { Header: "Quantity", accessor: "quantity" },
   { Header: "Discount", accessor: "discount" },
@@ -16,8 +16,13 @@ const columns:Column<DataType>[] = [
   { Header: "Status", accessor: "status" },
 ];
 
-const DashboardTable = ({data= []}:{data:DataType[]}) => {
-  return TableHOC<DataType>(columns, data, "transaction-box", "Top Transaction")();
+const DashboardTable = ({ data = [] }: { data: DataType[] }) => {
+  return TableHOC<DataType>(
+    columns,
+    data,
+    "transaction-box",
+    "Top Transaction"
+  )();
 };
 
 export default DashboardTable;

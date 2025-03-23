@@ -34,86 +34,94 @@ const columns: Column<DataType>[] = [
     accessor: "action",
   },
 ];
-const img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9OlQLlJj4mHeAPlqTZGW6RcwcrYJvtWuNyg&s";
-const img2 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMegFIjsTQDn-Dr-mM9G0eMDV_7yjY44-qaA&s"
+const img =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9OlQLlJj4mHeAPlqTZGW6RcwcrYJvtWuNyg&s";
+const img2 =
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMegFIjsTQDn-Dr-mM9G0eMDV_7yjY44-qaA&s";
 
 const arr: DataType[] = [
   {
-    photo: <img src={img} alt="shoes"/>,
+    photo: <img src={img} alt="shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
     price: 690,
     stock: 3,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img2} alt="Macbook"/>,
+    photo: <img src={img2} alt="Macbook" />,
     name: "Macbook",
     price: 6903432,
     stock: 9,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img} alt="shoes"/>,
+    photo: <img src={img} alt="shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
     price: 690,
     stock: 3,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img2} alt="Macbook"/>,
+    photo: <img src={img2} alt="Macbook" />,
     name: "Macbook",
     price: 6903432,
     stock: 9,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img} alt="shoes"/>,
+    photo: <img src={img} alt="shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
     price: 690,
     stock: 3,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img2} alt="Macbook"/>,
+    photo: <img src={img2} alt="Macbook" />,
     name: "Macbook",
     price: 6903432,
     stock: 9,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img} alt="shoes"/>,
+    photo: <img src={img} alt="shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
     price: 690,
     stock: 3,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img2} alt="Macbook"/>,
+    photo: <img src={img2} alt="Macbook" />,
     name: "Macbook",
     price: 6903432,
     stock: 9,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img} alt="shoes"/>,
+    photo: <img src={img} alt="shoes" />,
     name: "Puma Shoes Air Jordan Cook Nigga 2023",
     price: 690,
     stock: 3,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
   },
   {
-    photo: <img src={img2} alt="Macbook"/>,
+    photo: <img src={img2} alt="Macbook" />,
     name: "Macbook",
     price: 6903432,
     stock: 9,
-    action: <Link to="/admin/product/sajkhsh">Manage</Link>
-  }
+    action: <Link to="/admin/product/sajkhsh">Manage</Link>,
+  },
 ];
 
 const Products = () => {
   const [data] = useState<DataType[]>(arr);
   const Table = useCallback(
-    TableHOC<DataType>(columns, data, "dashboard-product-box", "Products", true),
+    TableHOC<DataType>(
+      columns,
+      data,
+      "dashboard-product-box",
+      "Products",
+      true
+    ),
     []
   );
   return (
@@ -123,7 +131,7 @@ const Products = () => {
       {/* main */}
       <main>{Table()}</main>
       <Link to="/admin/product/new" className="create-product-btn">
-      <FaPlus/>
+        <FaPlus />
       </Link>
     </div>
   );
