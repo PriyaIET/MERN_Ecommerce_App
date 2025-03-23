@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
 
 const img =
@@ -10,6 +10,11 @@ const ProductManagement = () => {
   const [stock, setStock] = useState<number>(10);
   const [photo, setPhoto] = useState<string>(img);
 
+  const [nameUpdate, setNameUpdate] = useState<string>(name);
+  const [priceUpdate, setPriceUpdate] = useState<number>(price);
+  const [stockUpdate, setStockUpdate] = useState<number>(stock);
+  const [photoUpdate, setPhotoUpdate] = useState<string>(photo);
+
   const changeImageHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const file: File | undefined = e.target.files?.[0];
     const reader: FileReader = new FileReader();
@@ -17,10 +22,18 @@ const ProductManagement = () => {
     if (file) {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        if (typeof reader.result === "string") setPhoto(reader.result);
+        if (typeof reader.result === "string") setPhotoUpdate(reader.result);
       };
     }
   };
+
+  const submitHandler=(e:FormEvent<HTMLFormElement>)=>{
+      e.preventDefault();
+      setName(nameUpdate)
+      setPrice(priceUpdate)
+      setStock(stockUpdate)
+      setPhoto(photoUpdate)
+  }
   return (
     <div className="admin-container">
       {/* SideBar */}
@@ -39,26 +52,26 @@ const ProductManagement = () => {
           <h3>${price}</h3>
         </section>
         <article>
-          <form action="">
-            <h2>New Product</h2>
+          <form action="" onSubmit={submitHandler}>
+            <h2>Manage Product</h2>
             <div>
-              <label> Name</label>
+              <label>Name</label>
               <input
                 required
                 type="text"
                 placeholder="Name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={nameUpdate}
+                onChange={(e) => setNameUpdate(e.target.value)}
               />
             </div>
             <div>
-              <label> Price</label>
+              <label>Price</label>
               <input
                 required
                 type="number"
                 placeholder="Price"
-                value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
+                value={priceUpdate}
+                onChange={(e) => setPriceUpdate(Number(e.target.value))}
               />
             </div>
             <div>
@@ -67,16 +80,16 @@ const ProductManagement = () => {
                 required
                 type="number"
                 placeholder="Stock"
-                value={stock}
-                onChange={(e) => setStock(Number(e.target.value))}
+                value={stockUpdate}
+                onChange={(e) => setStockUpdate(Number(e.target.value))}
               />
             </div>
             <div>
               <label>Photo</label>
               <input required type="file" onChange={changeImageHandler} />
             </div>
-            {photo && <img src={photo} alt="new product image" />}
-            <button type="submit">Create</button>
+            {photoUpdate && <img src={photoUpdate} alt="new product image" />}
+            <button type="submit">Update</button>
           </form>
         </article>
       </main>
