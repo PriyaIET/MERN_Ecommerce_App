@@ -14,45 +14,51 @@ import {
   FaStopwatch,
   FaGamepad,
 } from "react-icons/fa";
+import { Dispatch, SetStateAction, useState } from "react";
+import { HiMenuAlt4 } from "react-icons/hi";
 
 const AdminSidebar = () => {
   const location = useLocation();
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [phoneActive, setPhoneActive] = useState<boolean>(
+    window.innerWidth < 1100
+  );
   return (
-    <aside>
-      <h2>Logo.</h2>
-      {/* <div>
-        <h5>Dashboard</h5>
-        <ul>
-          <Li
-            url="/admin/dashboard"
-            text="Dashboard"
-            location={location}
-            Icon={RiDashboardFill}
-          />
-          <Li
-            url="/admin/product"
-            text="Product"
-            location={location}
-            Icon={RiShoppingBag3Fill}
-          />
-          <Li
-            url="/admin/customer"
-            text="Customer"
-            location={location}
-            Icon={IoIosPeople}
-          />
-          <Li
-            url="/admin/transaction"
-            text="Transaction"
-            location={location}
-            Icon={AiFillFileText}
-          />
-        </ul>
-      </div> */}
-      <DivOne location={location} />
-      <DivTwo location={location} />
-      <DivThree location={location} />
-    </aside>
+    <>
+      {phoneActive && (
+        <button
+          id="hamburger"
+          onClick={() => {
+            setShowModal(true);
+          }}
+        >
+          <HiMenuAlt4 />
+        </button>
+      )}
+      <aside
+        style={
+          phoneActive
+            ? {
+                width: "20rem",
+                height: "100vh",
+                position: "fixed",
+                top: 0,
+                left: showModal ? "0" : "-20rem",
+                transition: "all 0.5s",
+              }
+            : {}
+        }
+      >
+        <h2>Logo.</h2>
+        <DivOne location={location} />
+        <DivTwo location={location} />
+        <DivThree
+          location={location}
+          phoneActive={phoneActive}
+          setShowModal={setShowModal}
+        />
+      </aside>
+    </>
   );
 };
 
@@ -117,7 +123,15 @@ const DivTwo = ({ location }: { location: Location }) => {
   );
 };
 
-const DivThree = ({ location }: { location: Location }) => {
+const DivThree = ({
+  location,
+  phoneActive,
+  setShowModal,
+}: {
+  location: Location;
+  phoneActive: boolean;
+  setShowModal: Dispatch<SetStateAction<boolean>>;
+}) => {
   return (
     <div>
       <h5>Apps</h5>
@@ -141,6 +155,9 @@ const DivThree = ({ location }: { location: Location }) => {
           Icon={FaGamepad}
         />
       </ul>
+      {phoneActive && (
+        <button id="close-sidebar" onClick={() => setShowModal(false)}>Close</button>
+      )}
     </div>
   );
 };
