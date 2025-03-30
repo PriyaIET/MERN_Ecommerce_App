@@ -24,6 +24,12 @@
     .admin-container{
         grid-template-columns: 1fr !important;
     }
+    .heading{
+        margin-left: 2rem;
+    }
+    .bar{
+        margin-left: 4rem;
+    }
 }
 
 @media screen and (width<=600px) {

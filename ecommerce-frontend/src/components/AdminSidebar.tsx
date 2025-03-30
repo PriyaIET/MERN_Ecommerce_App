@@ -14,7 +14,7 @@ import {
   FaStopwatch,
   FaGamepad,
 } from "react-icons/fa";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useEffect, useState } from "react";
 import { HiMenuAlt4 } from "react-icons/hi";
 
 const AdminSidebar = () => {
@@ -23,6 +23,20 @@ const AdminSidebar = () => {
   const [phoneActive, setPhoneActive] = useState<boolean>(
     window.innerWidth < 1100
   );
+
+  const resizeHandler=()=>{
+      setPhoneActive(window.innerWidth<1100)
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize",resizeHandler)
+  
+    return () => {
+      window.removeEventListener("resize", resizeHandler)
+    }
+  }, [])
+  
+
   return (
     <>
       {phoneActive && (
@@ -54,9 +68,10 @@ const AdminSidebar = () => {
         <DivTwo location={location} />
         <DivThree
           location={location}
-          phoneActive={phoneActive}
-          setShowModal={setShowModal}
         />
+        {phoneActive && (
+        <button id="close-sidebar" onClick={() => setShowModal(false)}>Close</button>
+        )}
       </aside>
     </>
   );
@@ -124,13 +139,9 @@ const DivTwo = ({ location }: { location: Location }) => {
 };
 
 const DivThree = ({
-  location,
-  phoneActive,
-  setShowModal,
+  location
 }: {
   location: Location;
-  phoneActive: boolean;
-  setShowModal: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
     <div>
@@ -155,9 +166,6 @@ const DivThree = ({
           Icon={FaGamepad}
         />
       </ul>
-      {phoneActive && (
-        <button id="close-sidebar" onClick={() => setShowModal(false)}>Close</button>
-      )}
     </div>
   );
 };
