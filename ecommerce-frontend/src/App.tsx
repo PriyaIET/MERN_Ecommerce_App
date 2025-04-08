@@ -19,7 +19,7 @@ const Toss = lazy(()=>import("./pages/apps/Toss"))
 const App = () => {
   return (
     <Router>
-        <Suspense fallback={<Loader/>}>
+        <Suspense fallback={<Loader/>}>          
           <Routes>
               <Route path="/" element={<Link to="/admin/dashboard"><button style={{
                 padding:"2rem",
