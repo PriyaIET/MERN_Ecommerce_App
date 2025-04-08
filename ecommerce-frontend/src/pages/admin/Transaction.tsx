@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useState } from "react";
-import AdminSidebar from "../components/AdminSidebar";
+import AdminSidebar from "../../components/admin/AdminSidebar";
 import { Column } from "react-table";
-import TableHOC from "../components/TableHOC";
+import TableHOC from "../../components/admin/TableHOC";
 import { Link } from "react-router-dom";
 
 interface DataType {

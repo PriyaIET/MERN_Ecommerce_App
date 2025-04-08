@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AdminSidebar from "../../components/AdminSidebar"
+import AdminSidebar from "../../../components/admin/AdminSidebar"
 
 const formatTime=(timeInSeconds: number)=>{
   const hours = Math.floor(timeInSeconds / 3600);
@@ -24,7 +24,7 @@ const Stopwatch = () => {
   }
 
   useEffect(()=>{
-    let intervalID: number;
+    let intervalID: any;
     if(isRunning){
       intervalID = setInterval(()=>{
         setTime(prev=>prev+1)

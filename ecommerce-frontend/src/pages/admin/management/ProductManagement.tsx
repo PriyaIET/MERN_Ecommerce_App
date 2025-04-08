@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import AdminSidebar from "../../components/AdminSidebar";
+import AdminSidebar from "../../../components/admin/AdminSidebar";
 
 const img =
   "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT5uYXg6VAdEMyToxmCjPwj115HN7iM3l83tsA6XIsjNE90PropU2wU2RAoi_-oMJOZOlCAINtnK3kdLeKnOHSjTUowr72tKbXo1Vseu0yuUHMmHUmjFh0Pzw";
